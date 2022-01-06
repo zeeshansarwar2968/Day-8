@@ -1,0 +1,271 @@
+QUESTION-1:
+https://github.com/rvsp/typescript-oops/blob/master/Practice/Movie.md
+ 
+ANSWER:
+
+CODE:
+
+class Movie {
+    constructor(title, studio, rating = "PG") {
+      this.title = title;
+      this.studio = studio;
+      this.rating = rating;
+      return `
+      ${this.title} 
+      ${this.studio} 
+      ${this.rating}`
+    }
+  
+    static getPG(array1) {
+        var array2 = [];
+        for(let i=0;i<array1.length;i++) {
+            if(array1[i].rating==="PG"){
+                array2.push(array1[i].title);
+            }
+
+        }
+        
+
+       return array2;
+      
+    }
+  }
+let movie1 = new Movie('Inception','WB Studios','R18')
+let movie2 = new Movie('Casino Royale','Eon Productions')
+let movie3 = new Movie('Venom','Eon Productions','R')
+let movie4 = new Movie('Toy-Story 1','Disney-Pixar','PG')
+let movie5 = new Movie('Toy-Story 2','Disney-Pixar')
+let movie6 = new Movie('Toy-Story 3','Disney-Pixar')
+
+console.log(Movie.getPG([movie1,movie2,movie3,movie4,movie5,movie6]))
+console.log(movie2)
+
+OUTPUT:
+
+script.js:33 (3) ['Toy-Story 1', 'Toy-Story 2', 'Toy-Story 3']
+script.js:34 Movie {title: 'Casino Royale', studio: 'Eon Productions', rating: 'PG13'}
+
+
+
+QUESTION-2:
+https://github.com/rvsp/typescript-oops/blob/master/Practice/class-circle.md
+
+ANSWER:
+
+CODE:
+
+class Circle {
+    constructor(radius,color) {
+      this.radius = radius;
+      this.color = color;
+      return `
+      ${this.radius} 
+      ${this.color} `
+    }
+  
+    getRadius() {
+        return this.radius; 
+    }
+    setRadius(rad1) {
+        this.radius = rad1;
+        return this.radius; 
+    }
+    getColor() {
+        return this.color; 
+    }
+    setColor(col1) {
+        this.color = col1;
+        return this.color; 
+    }
+    toString() {
+        return ` Circle[radius=${this.radius},color=${this.color}] `
+    }
+    getArea() {
+        var area = Math.PI * Math.pow(this.radius,2) 
+        return area; 
+    }
+    getCircumference() {
+        var circum = 2 * Math.PI * this.radius; 
+        return circum; 
+    }
+}
+let circle1 = new Circle(1.0,'red')
+console.log(circle1)
+console.log(circle1.getRadius())
+console.log(circle1.getArea())
+console.log(circle1.getCircumference())
+console.log(circle1.toString())
+console.log(circle1.setRadius(2))
+console.log(circle1.getColor())
+console.log(circle1.setColor("Blue"))
+console.log(circle1.getArea())
+console.log(circle1.getCircumference())
+console.log(circle1.toString())
+
+OUTPUT:
+
+script.js:37 Circle {radius: 1, color: 'red'}
+script.js:38 1
+script.js:39 3.141592653589793
+script.js:40 6.283185307179586
+script.js:41  Circle[radius=1,color=red] 
+script.js:42 2
+script.js:43 red
+script.js:44 Blue
+script.js:45 12.566370614359172
+script.js:46 12.566370614359172
+script.js:47  Circle[radius=2,color=Blue] 
+
+
+
+QUESTION-3:
+Write a “person” class to hold all the details.
+
+ANSWER:
+
+CODE:
+
+class person {
+    constructor(fname,lname,age,gender,SID){
+        this.fname = fname;
+        this.lname = lname;
+        this.age = age;
+        this.gender= gender;
+        this.SID = SID;
+    }
+    getSID() {
+        return `
+        Social Security ID of ${this.fname} ${this.lname} is ${this.SID}
+        `
+        }
+        
+    getInfo() {
+        return `
+        Greetings!
+        My name is ${this.fname} ${this.lname}
+        Ny age is ${this.age}
+        I recognise myself as a ${this.gender}
+        `
+        }
+    static displayData(){
+        return `
+        Nationality: India
+        Firm: Dummy Corporation
+        Industry: Service
+        Firm Strength: 840
+        `
+    } 
+}
+
+let person1 = new person('Ajay', 'Maurya', 31,'Male',84218);
+let person2 = new person('Amit', 'Singh', 29,'Male',84219);
+let person3 = new person('Anjali', 'Srivastava', 30,'Female',84229);
+console.log(person1.getInfo())
+console.log(person2.getInfo())
+console.log(person3.getSID())
+console.log(person.displayData())
+
+
+OUTPUT:
+
+script.js:38
+Greetings!
+My name is Ajay Maurya
+Ny age is 31
+I recognise myself as a Male
+
+script.js:39 
+Greetings!
+My name is Amit Singh
+Ny age is 29
+I recognise myself as a Male
+
+script.js:40 
+Social Security ID of Anjali Srivastava is 84229
+
+script.js:41 
+Nationality: India
+Firm: Dummy Corporation
+Industry: Service
+Firm Strength: 840
+
+
+
+
+QUESTION-4:
+write a class to calculate uber price.
+
+//Base Fare + (Cost per minute * time in ride) + (Cost per mile * ride distance) + Booking Fee = Your Fare
+CODE:   
+
+class uberPrice {
+    constructor(distance,time,surge = false) {
+        this.distance = distance;
+        this.time= time;
+        this.surge = surge;
+
+    }
+
+    uberSedan() {
+        let bookingFee = 10;
+        let costMinute = 2.2;
+        if(this.surge == true){
+            return 35+bookingFee+(this.distance*25)+(costMinute*this.time);
+        }else {
+            return 32+bookingFee+(this.distance*22)+(costMinute*this.time);
+        }
+                               
+    }
+    uberGo() {
+        let bookingFee = 10;
+        let costMinute = 1.0;
+        if(this.surge == true){
+            return 18+bookingFee+(this.distance*18)+(costMinute*this.time);
+        }else {
+            return 15+bookingFee+(this.distance*15)+(costMinute*this.time);
+        }
+                               
+    }
+    uberAuto() {
+        let bookingFee = 5;
+        let costMinute = 1.0;
+        if(this.surge == true){
+            return 15+bookingFee+(this.distance*15)+(costMinute*this.time);
+        }else {
+            return 12+bookingFee+(this.distance*12)+(costMinute*this.time);
+        }
+                               
+    }
+    uberPremium() {
+        let bookingFee = 20;
+        let costMinute = 2.5;
+        if(this.surge == true){
+            return 40+bookingFee+(this.distance*30)+(costMinute*this.time);
+        }else {
+            return 35+bookingFee+(this.distance*26)+(costMinute*this.time);
+        }
+                               
+    }
+
+}
+
+let uberPrice1 = new uberPrice(10,30,true)
+let uberPrice2 = new uberPrice(10,30)
+console.log(uberPrice1.uberSedan())
+console.log(uberPrice2.uberSedan())
+console.log(uberPrice1.uberGo())
+console.log(uberPrice2.uberGo())
+console.log(uberPrice1.uberAuto())
+console.log(uberPrice2.uberAuto())
+console.log(uberPrice1.uberPremium())
+console.log(uberPrice2.uberPremium())
+
+OUTPUT:
+script.js:54 361
+script.js:55 328
+script.js:56 238
+script.js:57 205
+script.js:58 200
+script.js:59 167
+script.js:60 435
+script.js:61 390
